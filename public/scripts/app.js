@@ -26,7 +26,7 @@ var template = React.createElement(
 );
 
 var user = {
-  name: 'Juan David',
+  name: 'Juan David C.',
   age: 28,
   location: 'The world'
 };
