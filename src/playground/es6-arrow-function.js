@@ -17,4 +17,4 @@ const getFirstName =  (fullName) =>{
 } 
 const shortGetFirstName =  (fullName) => fullName.split(' ')[0]
 
-console.log(getFirstName('John Doe'))
+console.log(getFirstName('John Nope'))
