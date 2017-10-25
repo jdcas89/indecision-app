@@ -18,28 +18,44 @@ const template = (
 </div> 
 );
 
-const user = {
-  name: 'JD',
-  age: 25,
-  location: 'The world'
+
+//id gets bound just fine but class = className
+// templateTwo turns into a object. console.log(this) to show dom elements
+// https://reactjs.org/docs/dom-elements.html
+// html attributes that are reserved but supported are camelcased
+
+let count = 0
+const someId = 'my-cool-id'
+
+const addOne = () => {
+  count++
+  console.log(count)
 }
 
-function getLocation(location) {
-  if(location){
-    return  <p> Location: { location }</p>
-  }
+
+const minusOne = () => {
+  count--
+  console.log(count)
 }
+
+const reset = () => {
+  count = 0
+  console.log(count)
+}
+
 
 const templateTwo = (
   <div>
-    <h1> { user.name ? user.name.toUpperCase() : 'Anonymous'}</h1>
-    { (user.age && user.age > 18) && <p> Age: { user.age }</p>}
-    {
-      getLocation(user.location)
-    }
+    <h1>Count: {count}</h1>
+    <button id={someId} className="button" onClick={addOne}> +1</button>
+    <button  onClick={minusOne}> -1</button>
+    <button  onClick={reset}>Reset</button>
+    
   </div>
+
 )
+  
 
 const appRoot = document.getElementById('app')
 
-ReactDOM.render(template, appRoot )
+ReactDOM.render(templateTwo, appRoot )
