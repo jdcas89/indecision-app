@@ -1,47 +1,37 @@
 'use strict';
 
-var app = {
-  title: 'Visibility toggle',
-  showingDetails: false
-};
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var buttonText = 'Show details';
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var onShowDetails = function onShowDetails() {
-  if (app.showingDetails) {
-    app.showingDetails = !app.showingDetails;
-    buttonText = 'Show details';
-  } else {
-    app.showingDetails = !app.showingDetails;
-    buttonText = 'Hide details';
+var Person = function () {
+  function Person() {
+    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'default Name';
+    var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+    _classCallCheck(this, Person);
+
+    this.name = name;
+    this.age = age;
   }
-  render();
-};
 
-var appRoot = document.getElementById("app");
+  _createClass(Person, [{
+    key: 'getGreeting',
+    value: function getGreeting() {
+      return 'Hello my name is ' + this.name;
+    }
+  }, {
+    key: 'getDescription',
+    value: function getDescription() {
+      return ' ' + this.name + ' is ' + this.age + ' years old';
+    }
+  }]);
 
-var render = function render() {
-  var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-      'h1',
-      null,
-      ' ',
-      app.title
-    ),
-    React.createElement(
-      'button',
-      { onClick: onShowDetails },
-      buttonText
-    ),
-    React.createElement(
-      'p',
-      { hidden: !app.showingDetails },
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet lorem et nisl sollicitudin venenatis nec eget elit. Maecenas in eleifend massa, feugiat consectetur justo. Vivamus at hendrerit massa, vitae commodo magna. Nullam luctus metus eu mauris imperdiet, at congue ex posuere.'
-    )
-  );
-  ReactDOM.render(template, appRoot);
-};
+  return Person;
+}();
 
-render();
+var me = new Person('Chris', 27);
+var other = new Person();
+
+console.log(me.getDescription());
+console.log(other);
