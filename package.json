@@ -5,7 +5,7 @@
   "author": "J. Castellanos",
   "license": "MIT",
   "scripts": {
-    "build":"webpack --watch",
+    "build": "webpack --watch",
     "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
     "serve": "live-server public"
   },
