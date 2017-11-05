@@ -5,9 +5,9 @@
   "author": "J. Castellanos",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --watch",
-    "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
-    "serve": "live-server public"
+    "serve": "webpack --watch",
+    "build": "webpack",
+    "dev-server":"webpack-dev-server"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -18,7 +18,8 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "validator": "^9.1.1",
-    "webpack": "3.1.0"
+    "webpack": "3.1.0",
+    "webpack-dev-server": "^2.9.4"
   },
   "devDependencies": {
     "babel-cli": "6.24.1"
