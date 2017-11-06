@@ -3,7 +3,7 @@ import AddOption from "./AddOption";
 import Options from "./Options";
 import Header from "./Header";
 import Action from "./Action";
-import OptionModal from './OptionModal';
+import OptionModal from "./OptionModal";
 
 export default class IndecisionApp extends React.Component {
   state = {
@@ -14,20 +14,20 @@ export default class IndecisionApp extends React.Component {
   handleClearSelectedOption = () => {
     this.setState(() => ({
       selectedOption: undefined
-    }))
-  }
+    }));
+  };
 
   handleDeleteOptions = () => {
     this.setState(() => ({ options: [] }));
-  }
+  };
 
-  handleDeleteOption = (optionToRemove) => {
+  handleDeleteOption = optionToRemove => {
     this.setState(prevState => ({
       options: prevState.options.filter(option => optionToRemove !== option)
     }));
-  }
+  };
 
-  handleAddOption = (option) => {
+  handleAddOption = option => {
     if (!option) {
       return "Enter valid value to add item";
     } else if (this.state.options.indexOf(option) > -1) {
@@ -37,7 +37,7 @@ export default class IndecisionApp extends React.Component {
     this.setState(prevState => ({
       options: prevState.options.concat([option])
     }));
-  }
+  };
 
   handlePick = () => {
     const randomNum = Math.floor(Math.random() * this.state.options.length);
@@ -45,10 +45,8 @@ export default class IndecisionApp extends React.Component {
     const option = this.state.options[randomNum];
     this.setState(() => ({
       selectedOption: option
-    }
-    ))
-  }
-
+    }));
+  };
 
   //https://reactjs.org/docs/react-component.html
   componentDidMount = () => {
@@ -62,7 +60,7 @@ export default class IndecisionApp extends React.Component {
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   componentDidUpdate = (prevProps, prevState) => {
     console.log("componentDidUpdate");
@@ -70,14 +68,14 @@ export default class IndecisionApp extends React.Component {
       const json = JSON.stringify(this.state.options);
       localStorage.setItem("options", json);
     }
-  }
+  };
 
   componentWillMount = () => {
     console.log("componentWillMount");
-  }
-  componentWillUnmount = () =>{
+  };
+  componentWillUnmount = () => {
     console.log("componentWillUnmount");
-  }
+  };
 
   render() {
     const title = "Indecision";
@@ -86,19 +84,22 @@ export default class IndecisionApp extends React.Component {
     return (
       <div>
         <Header subtitle={subtitle} />
-        <Action
-          hasOptions={this.state.options.length > 0}
-          handlePick={this.handlePick}
-        />
-        <Options
-          options={this.state.options}
-          handleDeleteOptions={this.handleDeleteOptions}
-          handleDeleteOption={this.handleDeleteOption}
-        />
-        <AddOption handleAddOption={this.handleAddOption} />
-        <OptionModal 
-        selectedOption={this.state.selectedOption}
-        handleClearSelectedOption={this.handleClearSelectedOption}
+        <div className="container">
+          <Action
+            hasOptions={this.state.options.length > 0}
+            handlePick={this.handlePick}
+          />
+          <Options
+            options={this.state.options}
+            handleDeleteOptions={this.handleDeleteOptions}
+            handleDeleteOption={this.handleDeleteOption}
+          />
+          <AddOption handleAddOption={this.handleAddOption} />
+        </div>
+
+        <OptionModal
+          selectedOption={this.state.selectedOption}
+          handleClearSelectedOption={this.handleClearSelectedOption}
         />
       </div>
     );
